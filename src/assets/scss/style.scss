@@ -1,0 +1,322 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+.contact-form {
+    display: flex;
+    // height: 455px;
+    width: 325px;
+    flex-direction: column;
+    // justify-content: center;
+    margin: 15px;
+}
+
+.custom-modal-style {
+    width: 897px !important;
+    height: 802px !important;
+}
+
+.input-text,
+.input-image,
+.input-btn {
+    // display: flex;
+    justify-content: center;
+    // align-items: center;
+    // margin: 10px
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.img-close {
+    // background-color: grey;
+    display: inline-block;
+    // border: 1px solid red;
+    position: absolute;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile+label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    border-radius: 0.375rem;
+    width: 150px;
+    text-align: center;
+    background-color: #0d6efd;
+    display: inline-block;
+}
+
+.inputfile:focus+label,
+.inputfile+label:hover {
+    background-color: #0652c1;
+}
+
+.inputfile+label {
+    cursor: pointer;
+    /* "hand" cursor */
+}
+
+.input-trash {
+    cursor: pointer;
+    /* "hand" cursor */
+}
+
+// .inputfile:focus+label {
+//     outline: 1px dotted #000;
+//     outline: -webkit-focus-ring-color auto 5px;
+// }
+
+.input-img {
+    height: 200px;
+    width: 100%;
+}
+
+.list-input-img {
+    height: 50px;
+    width: 70px;
+}
+.input-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.error-msg {
+    color: #ff5252;
+    margin:0
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    //margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    //-moz-appearance: textfield;
+}
+
+
+.App {
+    text-align: center;
+}
+
+.App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 1.5vmin);
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+//Dragables styles
+
+.App {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2f74c0;
+    font-family: "Neucha", cursive;
+}
+
+.heading {
+    text-transform: uppercase;
+    font-size: 40px;
+    margin: 30px 0;
+    color: white;
+    z-index: 1;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .heading {
+        margin: 15px 0;
+        font-size: 35px;
+    }
+}
+
+
+
+
+// InputFiled Styles
+
+.input {
+    display: flex;
+    width: 95%;
+    position: relative;
+    align-items: center;
+}
+
+.input__box {
+    width: 100%;
+    border-radius: 50px;
+    padding: 20px 30px;
+    font-size: 25px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+}
+
+.input__box:focus {
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.input_submit {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 12px;
+    border-radius: 50px;
+    right: 0px;
+    border: none;
+    font-size: 15px;
+    background-color: #2f74c0;
+    color: white;
+    transition: 0.2s all;
+    box-shadow: 0 0 10px black;
+}
+
+.input_submit:hover {
+    background-color: #388ae2;
+}
+
+.input_submit:active {
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black;
+}
+
+.container {
+    width: 95%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.todos {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 47.5%;
+    padding: 15px;
+    background-color: rgb(50, 195, 205);
+}
+
+.dragactive {
+    background-color: rgb(0, 221, 236);
+}
+
+.dragcomplete {
+    background-color: rgb(255, 38, 0);
+}
+
+.remove {
+    background-color: rgb(238, 79, 51);
+}
+
+.todos__heading {
+    font-size: 30px;
+    /* text-align: center; */
+    color: white;
+}
+
+.todos__single {
+    display: flex;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+    transition: 0.2s;
+}
+
+.drag {
+    box-shadow: 0 0 20px black;
+}
+
+.todos__single:hover {
+    box-shadow: 0 0 5px black;
+    transform: scale(1.03);
+}
+
+.todos__single--text {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+}
+
+.todos__single--text:focus {
+    outline: none;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    .todos {
+        width: 45%;
+    }
+}
+
+@media (max-width: 700px) {
+    .input {
+        width: 95%;
+    }
+
+    .container {
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .todos {
+        width: 95%;
+        margin-bottom: 10px;
+    }
+}
+.crop-container{
+    display: flex;
+    justify-content: center;
+    height: 400;
+    width: 350;
+    background-color: #388ae2;
+}
+.crop.file-input {
+    display: flex;
+    justify-content: center;
+        height: 400;
+            width: 350;
+    background-color: #388ae2;
+}

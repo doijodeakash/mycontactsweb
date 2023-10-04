@@ -1,0 +1,117 @@
+.Weather-Container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    background: linear-gradient(180deg, #80bbee, #034f92);
+    height: 250px;
+    width: 400px;
+    // flex: .5 0 !important;
+    border-radius: 15px;
+}
+.weather-container-app{
+    width: 550px;
+    // height: 570px;
+    margin:auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    background-image: linear-gradient(180deg, #130754,#3b2f80);
+}
+
+.weather-field{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    // padding-top: 30px;
+}
+
+.weather-field + .input-text {
+    display: flex;
+    height: 362px;
+    width: 78px;
+    background:#ebfffc;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding-left: 40px;
+    color: #626262;
+    font-size: 20px;
+    font-weight: 400;
+    // justify-content: center;
+    // gap: 14px;
+    // padding-top: 60px;
+}
+
+.weather-card {
+    background:transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn-search-weather {
+    border-radius: 40px;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+}
+
+.weather-image {
+    height: 150px ;
+    width: 150px;
+    margin: auto;
+    margin-top: 29px;
+    display: flex;
+    justify-content: center;
+}
+.weather-temp {
+display: flex;
+justify-content: center;
+color: white;
+font-size: 60px;
+font-weight: 400;
+
+}
+
+.weather-location{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.data-container {
+    margin-top: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+
+}
+
+.element{
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.data{
+    font-size: 34px;
+    font-weight: 400;
+}
+.text{
+    font-size: 20px;
+    font-weight: 400;
+}
+.icon{
+    margin-top: 10px;
+}
