@@ -3,10 +3,12 @@ import { Navigate } from "react-router-dom";
 import CarouselBanner from "src/common/components/Carousel";
 import Cropper from "src/common/components/Cropper";
 import DragNDrop from "src/common/components/DragNDrop/Droppables";
+import CalculatorApp from "src/pages/Calculator";
 import ContactList from "src/pages/Contact/ContactList";
 import ContactForm from "src/pages/Contact/Form";
 import Dashboard from "src/pages/Dashboard/Dashboard";
 import Post from "src/pages/Post/Post";
+import ProductsList from "src/pages/Product/list";
 import WeatherApp from "src/pages/WeatherApp/Weather";
 // import { Navigate } from "react-router-dom";
 
@@ -65,6 +67,19 @@ const userRoutes = [
     component: <WeatherApp />,
     id: "4",
   },
+  {
+    path: "/product",
+    exact: true,
+    component: <ProductsList />,
+    id: "4",
+  },
+  {
+    path: "/calculatorApp",
+    exact: true,
+    component: <CalculatorApp />,
+    id: "4",
+  },
+
   // {
   //   path: "/contact/update/",
   //   component: <Login />,
