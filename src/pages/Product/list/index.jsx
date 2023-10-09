@@ -1,53 +1,19 @@
-import { Table } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { Table, Space, Input } from "antd";
 import _ from "lodash";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Card } from "reactstrap";
+import StarRatings from "src/common/components/Ratings";
 import { ProductList } from "src/store/Product/thunk";
+// import TextSearchFilter from "./components/TextSearchFilter";
 
 const ProductsList = () => {
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
+  const searchInput = useRef(null);
+
   const dispatch = useDispatch();
-  //   const onFilterChange = (e, dataIndex, confirm) => {
-  //     confirm();
-  //     let params = {
-  //       ...filters,
-  //     };
-  //     switch (dataIndex) {
-  //       case "id":
-  //         params = {
-  //           ...params,
-  //           commodity_form_id: e,
-  //         };
-  //         break;
-  //       default:
-  //         params = {
-  //           ...params,
-  //           [dataIndex]: e,
-  //         };
-  //         break;
-  //     }
-  //     setFilters(params);
-  //     history.push(FilterUtils.createUrl(params));
-  //   };
-  //   const handleReset = (clearFilters, dataIndex) => {
-  //     clearFilters();
-  //     let params = {
-  //       ...filters,
-  //     };
-  //     switch (dataIndex) {
-  //       case "id":
-  //         delete params["commodity_form_id"];
-  //         setFilters(params);
-  //         // history.push(FilterUtils.removeUrl("commodity_form_id"));
-  //         break;
-  //       default:
-  //         delete params[dataIndex];
-  //         setFilters(params);
-  //         history.push(FilterUtils.removeUrl(dataIndex));
-  //         break;
-  //     }
-  //   };
 
   const getProducts = async () => {
     dispatch(ProductList({}));
@@ -63,6 +29,119 @@ const ProductsList = () => {
   });
   let storeData = productsData;
   console.log("use--products-data", productsData);
+
+  const TextSearchFilter = (dataIndex) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
+      <div
+        style={{
+          padding: 8,
+        }}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <Input
+          ref={searchInput}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{
+            marginBottom: 8,
+            display: "block",
+          }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => clearFilters && handleReset(clearFilters)}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({
+                closeDropdown: false,
+              });
+              setSearchText(selectedKeys[0]);
+              setSearchedColumn(dataIndex);
+            }}
+          >
+            Filter
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              close();
+            }}
+          >
+            close
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered) => (
+      <SearchOutlined
+        style={{
+          color: filtered ? "#1677ff" : undefined,
+        }}
+      />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownOpenChange: (visible) => {
+      if (visible) {
+        setTimeout(() => searchInput.current?.select(), 100);
+      }
+    },
+    // render: (text) =>
+    //   searchedColumn === dataIndex ? (
+    //     <Highlighter
+    //       highlightStyle={{
+    //         backgroundColor: "#ffc069",
+    //         padding: 0,
+    //       }}
+    //       searchWords={[searchText]}
+    //       autoEscape
+    //       textToHighlight={text ? text.toString() : ""}
+    //     />
+    //   ) : (
+    //     text
+    //   ),
+  });
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+  };
 
   const coloumn = [
     {
@@ -156,7 +235,10 @@ const ProductsList = () => {
       fixed: true,
       render: (text, row) => (
         <div className="">
-          <div className="">{row.rating}</div>
+          <div className="">
+            {/* {row.rating} */}
+            <StarRatings rating={row.rating} />
+          </div>
         </div>
       ),
     },
@@ -185,6 +267,7 @@ const ProductsList = () => {
           <div className="">{row.brand}</div>
         </div>
       ),
+      ...TextSearchFilter("brand"),
     },
     {
       title: "Category",
@@ -214,7 +297,7 @@ const ProductsList = () => {
       ),
     },
     {
-      title: "Add to Cart",
+      title: "Action",
       //   dataIndex: "category",
       //   sorter: (a, b) => a.category.localeCompare(b.category),
       width: "80px",
@@ -227,7 +310,7 @@ const ProductsList = () => {
               color="primary"
               onClick={() => console.log("row.id", row.id)}
             >
-              Add to Cart
+              Buy
             </Button>
           </div>
         </div>
