@@ -1,6 +1,6 @@
-import { Field, Formik } from "formik";
+import { Field, Formik, yupToFormErrors } from "formik";
 import * as Yup from "yup";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   Modal,
@@ -16,8 +16,11 @@ import TextField from "src/common/components/TextField";
 import { CreateContact, UpdateContact, UserDetails } from "src/store/actions";
 import { useLocation, useNavigate } from "react-router-dom";
 import FormikImage from "src/common/components/FormikImage";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
+  const [RCToken, setRCToken] = useState("");
+  const ReCaptchaRef = useRef(null);
   const {
     state: { data, index },
   } = useLocation();
@@ -33,7 +36,16 @@ const ContactForm = () => {
   });
 
   const saveContact = async (values) => {
+    const token = await ReCaptchaRef.current.executeAsync();
+    console.log("tokens", token);
+    setRCToken(token);
+
+    if (!token) {
+      return alert("Please Complete Captcha");
+    }
+
     const fd = new FormData();
+    console.log("ReCaptchaRef --->", ReCaptchaRef);
     try {
       let res;
       let params = {
@@ -62,10 +74,19 @@ const ContactForm = () => {
     } catch (err) {
       console.log("errrr", err);
     }
+    // ReCaptchaRef.current.reset();
   };
-  //   useEffect(() => {
-  //     dispatch(UserDetails());
-  //   }, [isOpen]);
+  const onChange = (value) => {
+    setRCToken(value);
+    console.log("recaptcha value:", value);
+  };
+  // useEffect(() => {
+  //   // dispatch(UserDetails());
+  //   ReCaptchaRef.current.executeAsync();
+  // }, []);
+  const grecaptchaObject = window.grecaptcha;
+  console.log("ReCaptchaRef Token--->", ReCaptchaRef, grecaptchaObject);
+
   return (
     <div className="d-flex justify-content-center m-4">
       <Row className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -122,6 +143,17 @@ const ContactForm = () => {
                       >
                         Save
                       </Button>
+                      <ReCAPTCHA
+                        type="image"
+                        theme="dark"
+                        // sitekey={"6Lf6HH4oAAAAAKl7WDdG5Yt6v6yJFS7FVDVTFH1j"} // v3 site key
+                        sitekey={"6Lf7T34oAAAAALPL19FkTz3SaQd1fFqu40ztPoOX"} //  V2 site key
+                        size="invisible"
+                        // badge="inline"
+                        grecaptcha={grecaptchaObject}
+                        onChange={onChange}
+                        ref={ReCaptchaRef}
+                      />
                     </Col>
                   </Row>
                 </Card>
