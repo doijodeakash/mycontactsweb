@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Row, Spinner } from "reactstrap";
 import TextField from "src/common/components/TextField";
-import { UserLogin, UserDetails } from "src/store/actions";
+import { UserLogin } from "src/store/actions";
 import * as Yup from "yup";
 
 const Login = () => {
@@ -12,27 +12,28 @@ const Login = () => {
   const { isAuth, loading } = useSelector((state) => state.Login);
   useEffect(() => {}, [loading]);
   const { loginForm } = useSelector((state) => state.Login);
+  console.log(loginForm);
   const dispatch = useDispatch();
-  const onSubmit = async (values, { setSubmitting }) => {
-    const obj = {
-      ...values,
-      login_as: "easyfied",
-    };
-    setSubmitting(true);
-    try {
-      const res = await dispatch(UserLogin(obj)).unwrap();
-      setSubmitting(false);
-      if (res) {
-        // navigate('/dashboard')
-        dispatch(UserDetails());
-      }
-    } catch (err) {
-      setSubmitting(false);
-      if (err) {
-        // toast.error(err);
-      }
-    }
-  };
+  // const onSubmit = async (values, { setSubmitting }) => {
+  //   const obj = {
+  //     ...values,
+  //     login_as: "easyfied",
+  //   };
+  //   setSubmitting(true);
+  //   try {
+  //     const res = await dispatch(UserLogin(obj)).unwrap();
+  //     setSubmitting(false);
+  //     if (res) {
+  //       // navigate('/dashboard')
+  //       dispatch(UserDetails());
+  //     }
+  //   } catch (err) {
+  //     setSubmitting(false);
+  //     if (err) {
+  //       // toast.error(err);
+  //     }
+  //   }
+  // };
 
   const handleLogin = (formikbag) => {
     console.log("formikbag--->", formikbag);

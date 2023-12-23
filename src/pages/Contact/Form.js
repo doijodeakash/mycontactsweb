@@ -1,6 +1,6 @@
-import { Field, Formik, yupToFormErrors } from "formik";
+import { Field, Formik } from "formik";
 import * as Yup from "yup";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import {
   // Modal,
@@ -19,7 +19,7 @@ import FormikImage from "src/common/components/FormikImage";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
-  const [RCToken, setRCToken] = useState("");
+  // const [RCToken, setRCToken] = useState("");
   const ReCaptchaRef = useRef(null);
   const {
     state: { data, index },
@@ -38,7 +38,7 @@ const ContactForm = () => {
   const saveContact = async (values) => {
     const token = await ReCaptchaRef.current.executeAsync();
     console.log("tokens", token);
-    setRCToken(token);
+    // setRCToken(token);
 
     if (!token) {
       return alert("Please Complete Captcha");
@@ -69,6 +69,7 @@ const ContactForm = () => {
         fd.append("file", values["file"]);
         res = await dispatch(CreateContact(fd)).unwrap();
       }
+      console.log(res);
       dispatch(UserDetails());
       navigate("/contacts");
     } catch (err) {
@@ -77,7 +78,7 @@ const ContactForm = () => {
     // ReCaptchaRef.current.reset();
   };
   const onChange = (value) => {
-    setRCToken(value);
+    // setRCToken(value);
     console.log("recaptcha value:", value);
   };
   // useEffect(() => {
@@ -141,7 +142,7 @@ const ContactForm = () => {
                         title="Save"
                         className="input-btn"
                       >
-                        Saveaaaa
+                        Save
                       </Button>
                       <ReCAPTCHA
                         type="image"

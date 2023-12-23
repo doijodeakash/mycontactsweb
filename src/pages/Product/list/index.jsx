@@ -11,17 +11,16 @@ import { ProductList } from "src/store/Product/thunk";
 const ProductsList = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
+  console.log(searchText, searchedColumn);
   const searchInput = useRef(null);
 
   const dispatch = useDispatch();
 
-  const getProducts = async () => {
-    dispatch(ProductList({}));
-  };
+  // const getProducts = async () => {};
 
   // const { data } = productsData;
   useEffect(() => {
-    getProducts();
+    dispatch(ProductList({}));
   }, []);
 
   const productsData = useSelector((state) => {
