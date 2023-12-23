@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Col, Row } from "reactstrap";
+import React from "react";
 import { Field, Formik } from "formik";
 import ImageCropFiled from "./DragNDrop/ImageCropperField";
 const Cropper = () => {

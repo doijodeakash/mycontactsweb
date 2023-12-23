@@ -1,15 +1,15 @@
 import { Field, Form, Formik, useFormikContext } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import TextField from "src/common/components/TextField";
 import { PostList } from "src/store/actions";
 
 const { useEffect } = require("react");
 const { Link } = require("react-router-dom");
-const { Row, Col, Card, Table, Button } = require("reactstrap");
+const { Row, Col, Card, Table } = require("reactstrap");
 const { default: Pagination } = require("src/common/components/Pagination");
 
 const Post = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { page, limit } = useSelector((state) => state.Pagination);
   const list = useSelector((state) => state.Contact.posts);
   return (

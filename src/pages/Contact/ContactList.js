@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContactList, DeleteContact } from "src/store/actions";
 // import ContactForm from "./ContactForm";
@@ -69,6 +69,7 @@ const List = () => {
                           <td>
                             {row.imgPath ? (
                               <img
+                                alt=""
                                 src={`${row.imgPath}`}
                                 className="list-input-img"
                               />

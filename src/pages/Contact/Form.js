@@ -1,12 +1,12 @@
 import { Field, Formik, yupToFormErrors } from "formik";
 import * as Yup from "yup";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  Modal,
+  // Modal,
   ModalHeader,
-  ModalBody,
-  ModalFooter,
+  // ModalBody,
+  // ModalFooter,
   Card,
   Row,
   Button,
@@ -26,7 +26,7 @@ const ContactForm = () => {
   } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
 
   const validateForm = Yup.object({
     name: Yup.string().required("Name is required field"),

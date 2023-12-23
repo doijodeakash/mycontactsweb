@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Table, Space, Input } from "antd";
-import _ from "lodash";
+// import _ from "lodash";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Card } from "reactstrap";

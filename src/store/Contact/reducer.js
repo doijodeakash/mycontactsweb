@@ -3,7 +3,7 @@ import {
   ContactList,
   ContactOne,
   CreateContact,
-  DeleteContact,
+  // DeleteContact,
   PostList,
   UpdateContact,
 } from "./thunk";

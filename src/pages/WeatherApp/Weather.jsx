@@ -12,7 +12,7 @@ import drizzle_icon from "../../assets/images/drizzle.png";
 import rain_icon from "../../assets/images/rain.png";
 import snow_icon from "../../assets/images/snow.png";
 
-import _ from "lodash";
+// import _ from "lodash";
 import { toast } from "react-toastify";
 
 const WeatherApp = () => {
@@ -26,7 +26,7 @@ const WeatherApp = () => {
     location: "",
   });
   const getWeather = async (values, formikBag) => {
-    const { setFieldError } = formikBag;
+    // const { setFieldError } = formikBag;
     setHide(true);
     console.log("Weather--values", values, formikBag);
 

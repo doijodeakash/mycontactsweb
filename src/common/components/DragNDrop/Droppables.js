@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import TodoList from "./TodoList";
 import InputField from "./InputField";
 

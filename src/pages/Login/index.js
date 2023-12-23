@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Row, Spinner } from "reactstrap";
 import TextField from "src/common/components/TextField";
-import { UserLogin, UserDetails, UserRegister } from "src/store/actions";
+import { UserLogin, UserDetails } from "src/store/actions";
 import * as Yup from "yup";
 
 const Login = () => {

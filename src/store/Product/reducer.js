@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductList } from "./thunk";
-import _ from "lodash";
+// import _ from "lodash";
 
 export const product = {
   id: "",

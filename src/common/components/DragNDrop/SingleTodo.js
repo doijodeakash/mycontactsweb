@@ -9,7 +9,7 @@ const SingleTodo = ({ index, todo, todos, setTodos }) => {
   const [edit, setEdit] = useState(false);
   const [editTodo, setEditTodo] = useState(todo.todo);
 
-  const inputRef = useRef < HTMLInputElement > null;
+  const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);

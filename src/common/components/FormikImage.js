@@ -12,7 +12,7 @@ const FormikImage = (props) => {
   } = props;
 
   const errorMessage = getIn(errors, name);
-  const isTouched = getIn(touched, name);
+  // const isTouched = getIn(touched, name);
 
   const renderError = () => {
     return <p className="error-msg">{errorMessage}</p>;

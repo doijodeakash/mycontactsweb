@@ -1,7 +1,7 @@
 // import logo from "./logo.svg";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { userRoutes, PublicRoute } from "./routes/allRoutes";
 // import { useDispatch, useSelector } from "node_modules/react-redux/es/exports";
 import AuthGuard from "./routes/middleware/AuthGuard";
@@ -12,10 +12,10 @@ import { UserDetails } from "./store/actions";
 import "./assets/scss/style.scss";
 
 function App() {
-  const location = useLocation();
+  // const location = useLocation();
   const dispatch = useDispatch();
-  const { isAuth, loading } = useSelector((state) => state.Login);
-  const user = localStorage.getItem("user");
+  const { loading } = useSelector((state) => state.Login);
+  // const user = localStorage.getItem("user");
 
   useEffect(() => {
     dispatch(UserDetails());

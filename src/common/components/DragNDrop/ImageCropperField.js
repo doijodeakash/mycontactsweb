@@ -1,13 +1,7 @@
-import { Button, Col, Input, Label } from "reactstrap";
+import { Button, Col, Label } from "reactstrap";
 import { ErrorMessage, getIn } from "formik";
 import { useEffect, useState } from "react";
-import ReactCrop, {
-  centerCrop,
-  makeAspectCrop,
-  Crop,
-  PixelCrop,
-  convertToPixelCrop,
-} from "react-image-crop";
+import ReactCrop from "react-image-crop";
 
 const ImageCropFiled = (props) => {
   const [file, setFile] = useState();
@@ -17,14 +11,11 @@ const ImageCropFiled = (props) => {
   const [result, setResult] = useState();
   const {
     field: { name },
-    form: { setFieldValue, values, errors, touched },
-    placeholder,
-    type,
+    form: { setFieldValue, values, errors },
     isCrop,
   } = props;
 
   const errorMessage = getIn(errors, name);
-  const isTouched = getIn(touched, name);
 
   const renderError = () => {
     return <p className="error-msg">{errorMessage}</p>;
@@ -62,10 +53,6 @@ const ImageCropFiled = (props) => {
     setFieldValue("file", file);
     setFieldValue("fileName", fileName);
   }, [file, fileName]);
-
-  const onImageLoaded = (e) => {
-    console.log("eeeee--->", e);
-  };
 
   const getCroppedImg = () => {
     const canvas = document.createElement("canvas");
@@ -124,10 +111,10 @@ const ImageCropFiled = (props) => {
                     crop={crop}
                     onComplete={(setImage, getCroppedImg)}
                   >
-                    <img className="input-image" src={values[name]} />
+                    <img alt="" className="input-image" src={values[name]} />
                   </ReactCrop>
                 ) : (
-                  <img src={values[name]} />
+                  <img alt="" src={values[name]} />
                 )}
                 <div
                   className="img-close"
@@ -196,8 +183,3 @@ const ImageCropFiled = (props) => {
 };
 
 export default ImageCropFiled;
-
-const styles = {
-  height: 40,
-  width: "100%",
-};

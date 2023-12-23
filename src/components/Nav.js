@@ -1,9 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 
 const Nav = () => {
   const user = localStorage.getItem("user");
-  const { pathname, state } = useLocation();
+  // const { pathname, state } = useLocation();
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");

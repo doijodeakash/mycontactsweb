@@ -1,4 +1,4 @@
-import { get, patch, post, put, del } from "src/helpers/api_helper";
+import { get, post, put, del } from "src/helpers/api_helper";
 import * as URL from "src/helpers/url_helper";
 
 export const getContact = (id) => get(`${URL.CONTACT_ONE}/${id}`);
