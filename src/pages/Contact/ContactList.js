@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContactList, DeleteContact } from "src/store/actions";
-import ContactForm from "./Form";
+// import ContactForm from "./ContactForm";
 import { Link } from "react-router-dom";
 import Pagination from "src/common/components/Pagination";
 
