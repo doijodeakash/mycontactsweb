@@ -1,44 +1,43 @@
-import React from "react";
-import Ratings from "react-ratings-declarative";
+import Ratings from 'react-ratings-declarative'
 
 const StarRatings = ({ rating }) => {
-  return (
-    <Ratings
-      className="d-felx flex-column"
-      rating={rating}
-      widgetDimensions="15px"
-      widgetSpacings="5px"
-      // widgetRatedColors="white"
-      // changeRating={changeRating}
-      disable
-    >
-      <Ratings.Widget
-        widgetDimensions="10px"
-        widgetHoverColor="green"
-        widgetRatedColor="green"
-      />
-      <Ratings.Widget
-        widgetHoverColor="green"
-        widgetDimensions="10px"
-        widgetRatedColor="green"
-      />
-      <Ratings.Widget
-        widgetHoverColor="green"
-        widgetDimensions="10px"
-        widgetRatedColor="green"
-      />
-      <Ratings.Widget
-        widgetHoverColor="green"
-        widgetDimensions="10px"
-        widgetRatedColor="green"
-      />
-      <Ratings.Widget
-        widgetHoverColor="green"
-        widgetDimensions="10px"
-        widgetRatedColor="green"
-      />
+    return (
+        <Ratings
+            className='d-felx flex-column'
+            rating={rating}
+            widgetDimensions='15px'
+            widgetSpacings='5px'
+            // widgetRatedColors="white"
+            // changeRating={changeRating}
+            disable
+        >
+            <Ratings.Widget
+                widgetDimensions='10px'
+                widgetHoverColor='green'
+                widgetRatedColor='green'
+            />
+            <Ratings.Widget
+                widgetHoverColor='green'
+                widgetDimensions='10px'
+                widgetRatedColor='green'
+            />
+            <Ratings.Widget
+                widgetHoverColor='green'
+                widgetDimensions='10px'
+                widgetRatedColor='green'
+            />
+            <Ratings.Widget
+                widgetHoverColor='green'
+                widgetDimensions='10px'
+                widgetRatedColor='green'
+            />
+            <Ratings.Widget
+                widgetHoverColor='green'
+                widgetDimensions='10px'
+                widgetRatedColor='green'
+            />
 
-      {/* <Ratings.Widget />
+            {/* <Ratings.Widget />
               <Ratings.Widget
                 widgetDimension="60px"
                 svgIconViewBox="0 0 5 5"
@@ -46,8 +45,8 @@ const StarRatings = ({ rating }) => {
               />
               <Ratings.Widget widgetHoverColor="black" />
               <Ratings.Widget /> */}
-    </Ratings>
-  );
-};
+        </Ratings>
+    )
+}
 
-export default StarRatings;
+export default StarRatings
