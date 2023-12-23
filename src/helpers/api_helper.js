@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 // import { createAsyncThunk } from '@reduxjs/toolkit'
-const axios = require('axios');
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { AuthFail } from "src/store/Auth/reducer";
 // import store from '../store/store';
 
 // const dispatch =
 //
+const axios = require('axios');
+
 const API_URL = process.env.API_URL
   ? `${process.env.API_URL}`
   : "http://localhost:5000/api/";
