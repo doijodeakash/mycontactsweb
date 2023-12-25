@@ -11,6 +11,7 @@
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
+    "env-cmd": "^10.1.0",
     "formik": "^2.4.4",
     "lodash": "^4.17.21",
     "modern-css-reset": "^1.4.0",
@@ -35,8 +36,12 @@
     "yup": "^1.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f .env react-scripts start",
     "build": "react-scripts build",
+    "start:dev": "env-cmd -f .env.development react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
