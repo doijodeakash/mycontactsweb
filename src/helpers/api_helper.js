@@ -7,9 +7,7 @@ import { AuthFail } from "src/store/Auth/reducer";
 
 // const dispatch =
 //
-const API_URL = process.env.API_URL
-  ? `${process.env.API_URL}`
-  : "http://localhost:5000/api/";
+const API_URL = process.env.REACT_APP_URL
 console.log("process.env.API_URL", process.env.API_URL, process.env.RECAPTCHA_SITE_KEY);
 const axiosApi = axios.create({
   baseURL: API_URL,
