@@ -15,6 +15,7 @@ function App() {
   // const location = useLocation();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.Login);
+  console.log(loading)
   // const user = localStorage.getItem("user");
 
   useEffect(() => {
