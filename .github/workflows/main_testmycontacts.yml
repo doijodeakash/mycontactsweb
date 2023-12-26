@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_36c0e70207fc4c72a5fc7e43f7f2f413 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9cac4070560d4677982c1307d3c5e0f5 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_89c48a546fa1438595196902c98c4324 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_8cc40fbe58fe4346b83af9ec9960e18d }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_36c0e70207fc4c72a5fc7e43f7f2f413 }}/mycontactsweb:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_89c48a546fa1438595196902c98c4324 }}/doijodeakash/mycontactsweb:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'testmycontacts'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6a37257f15874500a3933b8085a9628e }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_36c0e70207fc4c72a5fc7e43f7f2f413 }}/mycontactsweb:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b8bff805c73d46e8ba0f641236f6abbc }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_89c48a546fa1438595196902c98c4324 }}/doijodeakash/mycontactsweb:${{ github.sha }}'
