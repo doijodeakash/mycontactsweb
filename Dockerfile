@@ -81,7 +81,8 @@ RUN npm install
 COPY . .
 
 RUN npm run build:prod
-
+ENV HOST 127.0.0.1
+ENV PORT 3000
 EXPOSE 3000
 
 CMD npm run start:prod
