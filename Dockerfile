@@ -81,7 +81,7 @@ RUN npm install
 COPY . .
 
 RUN npm run build:prod
-ENV HOST 127.0.0.1
+ENV HOST 0.0.0.0
 ENV PORT 443
 EXPOSE 443
 
