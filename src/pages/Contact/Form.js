@@ -32,7 +32,7 @@ const ContactForm = () => {
         name: Yup.string().required('Name is required field'),
         email: Yup.string().required('E-mail is required field'),
         phone: Yup.string().required('Phone is required field'),
-        img: Yup.string().required('Image is required field')
+        //img: Yup.string().required('Image is required field')
     })
 
     const saveContact = async (values) => {
