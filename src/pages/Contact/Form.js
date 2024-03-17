@@ -1,6 +1,6 @@
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
-import { useRef } from 'react'
+// import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import {
     // Modal,
@@ -16,11 +16,12 @@ import TextField from 'src/common/components/TextField'
 import { CreateContact, UpdateContact, UserDetails } from 'src/store/actions'
 import { useLocation, useNavigate } from 'react-router-dom'
 import FormikImage from 'src/common/components/FormikImage'
-import ReCAPTCHA from 'react-google-recaptcha'
+// import ReCAPTCHA from 'react-google-recaptcha'
+// import imageCompression from 'browser-image-compression'
 
 const ContactForm = () => {
     // const [RCToken, setRCToken] = useState("");
-    const ReCaptchaRef = useRef(null)
+    // const ReCaptchaRef = useRef(null)
     const {
         state: { data, index }
     } = useLocation()
@@ -32,20 +33,12 @@ const ContactForm = () => {
         name: Yup.string().required('Name is required field'),
         email: Yup.string().required('E-mail is required field'),
         phone: Yup.string().required('Phone is required field'),
-        //img: Yup.string().required('Image is required field')
+        // img: Yup.string().required('Image is required field')
     })
 
-    const saveContact = async (values) => {
-        const token = await ReCaptchaRef.current.executeAsync()
-        console.log('tokens', token)
-        // setRCToken(token);
-
-        if (!token) {
-            return
-        }
+    const saveContact = async (values, formDataProps) => {
 
         const fd = new FormData()
-        console.log('ReCaptchaRef --->', ReCaptchaRef)
         try {
             let res
             const params = {
@@ -53,20 +46,21 @@ const ContactForm = () => {
                 name: values.name,
                 email: values.email,
                 phone: values.phone,
-                img: values.img
+                // img: values.img
             }
+            formDataProps.setFieldValue('img',values.img)
             if (params.id > 0 || params.id !== 0) {
                 fd.append('id', params.id)
                 fd.append('name', values?.name)
                 fd.append('email', values?.email)
                 fd.append('phone', values?.phone)
-                fd.append('file', values?.file)
+                // fd.append('file', values?.file)
                 res = await dispatch(UpdateContact(fd)).unwrap()
             } else {
                 fd.append('name', values?.name)
                 fd.append('email', values?.email)
                 fd.append('phone', values?.phone)
-                fd.append('file', values?.file)
+                // fd.append('file', values?.file)
                 res = await dispatch(CreateContact(fd)).unwrap()
             }
             console.log(res)
@@ -77,16 +71,16 @@ const ContactForm = () => {
         }
         // ReCaptchaRef.current.reset();
     }
-    const onChange = (value) => {
-        // setRCToken(value);
-        console.log('recaptcha value:', value)
-    }
+    // const onChange = (value) => {
+    //     // setRCToken(value);
+    //     console.log('recaptcha value:', value)
+    // }
     // useEffect(() => {
     //   // dispatch(UserDetails());
     //   ReCaptchaRef.current.executeAsync();
     // }, []);
-    const grecaptchaObject = window.grecaptcha
-    console.log('ReCaptchaRef Token--->', ReCaptchaRef, grecaptchaObject)
+    // const grecaptchaObject = window.grecaptcha
+    // console.log('ReCaptchaRef Token--->', ReCaptchaRef, grecaptchaObject)
 
     return (
         <div className='d-flex justify-content-center m-4'>
@@ -104,7 +98,7 @@ const ContactForm = () => {
                             img: (data && data[index]?.imgPath) || ''
                         }}
                         validationSchema={validateForm}
-                        onSubmit={(values) => saveContact(values)}
+                        onSubmit={saveContact}
                     >
                         {({ status, values, handleSubmit }) => {
                             console.log('form--Values', values)
@@ -144,7 +138,7 @@ const ContactForm = () => {
                                             >
                                                 Save
                                             </Button>
-                                            <ReCAPTCHA
+                                            {/* <ReCAPTCHA
                                                 type='image'
                                                 theme='dark'
                                                 // sitekey={"6Lf6HH4oAAAAAKl7WDdG5Yt6v6yJFS7FVDVTFH1j"} // v3 site key
@@ -154,7 +148,7 @@ const ContactForm = () => {
                                                 grecaptcha={grecaptchaObject}
                                                 onChange={onChange}
                                                 ref={ReCaptchaRef}
-                                            />
+                                            /> */}
                                         </Col>
                                     </Row>
                                 </Card>
