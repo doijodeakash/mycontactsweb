@@ -36,8 +36,8 @@ const ContactForm = () => {
     })
 
     const saveContact = async (values) => {
-        const token = await ReCaptchaRef.current.executeAsync()
-        console.log('tokens', token)
+        // const token = await ReCaptchaRef.current.executeAsync()
+        // console.log('tokens', token)
         // setRCToken(token);
 
         if (!token) {
@@ -45,7 +45,7 @@ const ContactForm = () => {
         }
 
         const fd = new FormData()
-        console.log('ReCaptchaRef --->', ReCaptchaRef)
+        // console.log('ReCaptchaRef --->', ReCaptchaRef)
         try {
             let res
             const params = {
