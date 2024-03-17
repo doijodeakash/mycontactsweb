@@ -15,8 +15,8 @@ import {
 import TextField from 'src/common/components/TextField'
 import { CreateContact, UpdateContact, UserDetails } from 'src/store/actions'
 import { useLocation, useNavigate } from 'react-router-dom'
-// import FormikImage from 'src/common/components/FormikImage'
-import ReCAPTCHA from 'react-google-recaptcha'
+import FormikImage from 'src/common/components/FormikImage'
+// import ReCAPTCHA from 'react-google-recaptcha'
 
 const ContactForm = () => {
     // const [RCToken, setRCToken] = useState("");
@@ -53,20 +53,20 @@ const ContactForm = () => {
                 name: values.name,
                 email: values.email,
                 phone: values.phone,
-                //img: values.img
+                // img: values.img
             }
-            if (params.id > 0 || params.id !== 0) {
+            if (params.id) {
                 fd.append('id', params.id)
                 fd.append('name', values?.name)
                 fd.append('email', values?.email)
                 fd.append('phone', values?.phone)
-                //fd.append('file', values?.file)
+                // fd.append('file', values?.file)
                 res = await dispatch(UpdateContact(fd)).unwrap()
             } else {
                 fd.append('name', values?.name)
                 fd.append('email', values?.email)
                 fd.append('phone', values?.phone)
-                //fd.append('file', values?.file)
+                // fd.append('file', values?.file)
                 res = await dispatch(CreateContact(fd)).unwrap()
             }
             console.log(res)
@@ -78,15 +78,15 @@ const ContactForm = () => {
         // ReCaptchaRef.current.reset();
     }
     // const onChange = (value) => {
-    //     // setRCToken(value);
-    //     console.log('recaptcha value:', value)
+        // setRCToken(value);
+        // console.log('recaptcha value:', value)
     // }
     // useEffect(() => {
     //   // dispatch(UserDetails());
     //   ReCaptchaRef.current.executeAsync();
     // }, []);
-    //const grecaptchaObject = window.grecaptcha
-    //console.log('ReCaptchaRef Token--->', ReCaptchaRef, grecaptchaObject)
+    // const grecaptchaObject = window.grecaptcha
+    // console.log('ReCaptchaRef Token--->', ReCaptchaRef, grecaptchaObject)
 
     return (
         <div className='d-flex justify-content-center m-4'>
@@ -133,7 +133,7 @@ const ContactForm = () => {
                                                 placeholder='Phone'
                                                 className='form-control'
                                             />
-                                            // <Field name='img' component={FormikImage} />
+                                            <Field name='img' component={FormikImage} />
 
                                             <Button
                                                 color='primary'
