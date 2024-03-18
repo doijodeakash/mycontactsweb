@@ -48,5 +48,4 @@ jobs:
         app-name: 'mycontacts'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a733a5757b9f4ee5aace92e07bfc6206 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f32291391458458eb8f57d6b80c4eff4 }}/doijodeakash/mycontactsweb:imgtagweb'
-        # images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f32291391458458eb8f57d6b80c4eff4 }}/doijodeakash/mycontactsweb:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f32291391458458eb8f57d6b80c4eff4 }}/doijodeakash/mycontactsweb:${{ github.sha }}'
