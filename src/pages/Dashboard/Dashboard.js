@@ -8,6 +8,7 @@ const Dashboard = () => {
       <Col>
         <Card className="container-sm border border-white mt-3">
           <p>Hello..! {user.username}</p>
+          <p>refresh again...</p>
         </Card>
       </Col>
     </Row>
